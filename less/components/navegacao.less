@@ -1,0 +1,98 @@
+
+/*---
+section: Objetos
+title: Navegação
+---
+
+##### Navegação principal
+
+`.Nav--principal`: Menu principal do portal. É colidível no viewport `xs`.
+
+```example:jade
+ul.Nav--principal.navbar.navbar-collapse.navbar-default
+  ul.nav.navbar-nav
+  li: a Início
+  li: a Notícias
+  li: a Temas
+```
+*/
+
+.Nav--principal {
+  border-radius: 0;
+  background: #fff;
+  border: none;
+  border-top: dotted 1px @cinza-medio;
+  border-bottom: solid 5px @azul-padrao;
+  margin-bottom: 0;
+  font-size: 16px;
+  min-height: 0; // sendo o Nav--principal um navbar, desfazer o min-height
+
+  @media (max-width: @screen-xs-max) {
+    min-height: inherit;
+    border-bottom: none;
+  }
+
+  @media (min-width: @screen-sm-max) {
+    > ul > li > a {
+      padding: 15px;
+    }
+  }
+
+  li > a.dropdown-toggle > .caret {
+    margin-top: 0;
+  }
+}
+
+/*---
+section: Navegação
+---
+
+##### Navegação secundária
+
+`.Nav--secundaria`: Menu secundário utilizado no topo do site. Preferencialmente, não
+deve ser exibido em `xs`. Utilizado
+
+```example:jade
+div.Nav--secundaria.navbar
+  ul.nav.navbar-nav.pull-right
+    li: a(href='#') Jornal do Senado
+    li: a(href='#') Senado Notícias
+    li: a(href='#') TV Senado
+```
+*/
+
+@secundaria-height: 30px;
+
+.Nav--secundaria {
+  border: none;
+  border-radius: 0;
+  border-top: 1px solid #ccc;
+  background-color: #f7f7f7;
+  min-height: 30px;
+  margin-bottom: 0;
+
+  > ul > li {
+    line-height: @secundaria-height;
+
+    > a {
+      font-size: 13px;
+      float: left;
+      padding: 0 15px;
+      line-height: @secundaria-height;
+    }
+
+    @media (min-width: @screen-xs-max) {
+      &:not(:last-child)::after {
+        font-size: 14px;
+        content: ' ';
+        border-left: 1px solid #ccc;
+      }
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    > ul {
+      float: left !important;
+    }
+  }
+}

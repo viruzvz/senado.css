@@ -1,0 +1,96 @@
+/*---
+title:   Flag
+section: Components
+---
+
+`.Flag`: Estrutura genérica de disposição de conteúdo com uma mídia lateral e um conteúdo
+adjacente. É centralizado verticalmente por padrão, mas pode ser alinhhado ao topo
+ou ao rodapé por meio dos modificadores `--top` e `--bottom`.
+
+```example:jade
+.Flag
+  .Flag-figure
+  .Icon.Icon--newspaper.Icon--lg
+  .Flag-body
+  a Middle
+  div: small Nunquam gratia guttus
+  div: small Cur impositio resistere?
+.Flag.Flag--top
+  .Flag-figure
+  .Icon.Icon--bubble.Icon--lg
+  .Flag-body
+  a Top
+  div: small Nunquam consumere tumultumque
+  div: small Cur adgium persuadere
+.Flag.Flag--bottom
+  .Flag-figure
+  .Icon.Icon--twitter.Icon--lg
+  .Flag-body
+  a Bottom
+  div: small Dexter verpas ducunt ad devatio.
+  div: small A falsis, verpa peritus burgus.
+```
+*/
+
+@flag-spacing: 10px;
+
+.Flag {
+  display: table;
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: @flag-spacing;
+  }
+}
+
+.Flag-figure,
+.Flag-body {
+  display: table-cell;
+  vertical-align: middle;
+
+  .Flag--top & {
+    vertical-align: top;
+  }
+
+  .Flag--bottom & {
+    vertical-align: bottom;
+  }
+
+  .collapse-margins();
+}
+
+.Flag-figure {
+  padding-right: 10px;
+
+  > img {
+    display: block;
+    max-width: none;
+  }
+
+  .Flag--rev & {
+    padding-right: 0;
+    padding-left: 10px;
+  }
+}
+
+.Flag-figure--compact {
+  padding-right: 0;
+}
+
+.Flag-body {
+  max-width: 0;
+  width: 100%;
+}
+
+.Flag--material {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+  > .Flag-figure {
+    padding-right: @padding-base-horizontal;
+  }
+
+  > .Flag-body {
+    padding-right: @padding-base-horizontal;
+  }
+}

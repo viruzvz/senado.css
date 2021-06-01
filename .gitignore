@@ -1,0 +1,16 @@
+*.idea
+.grunt
+.lock-wscript
+
+node_modules
+dist/*
+*.css
+*.css.map
+*.html
+**/output
+
+tests/**/results
+*.diff.png
+*.fail.png
+
+styleguide
